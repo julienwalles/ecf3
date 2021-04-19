@@ -17,7 +17,7 @@ function loadDoc() {
 
                 var span = document.createElement("span");
 
-                span.id="infos";
+                span.id = "infos";
 
                 btnInfos.textContent = "Plus d'infos";
 
@@ -34,6 +34,21 @@ function loadDoc() {
                 list.appendChild(newLi);
 
                 list.appendChild(span);
+
+
+                btnInfos.addEventListener("show.bs.modal", moreInfos);
+
+                function moreInfos() {
+                    for (i = 0; i < az.length; i++) {
+                        var modal = document.createElement("div");
+                        modal.className = "modal-dialog modal-dialog-centered";
+                        // modal.textContent = "plus d'infos";
+                        var etdnt = az[i];
+                        var infos = document.createTextNode(etdnt.city + " " + etdnt.phone);
+                        modal.appendChild(infos);
+                    }
+                }
+
             }
         }
     };
@@ -41,10 +56,23 @@ function loadDoc() {
     xhttp.send();
 }
 
-var infos = document.getElementById("infos");
 
-infos.addEventListener("click", getInfos);
 
-function getInfos() {
-    
-}
+// var infos = document.getElementById("infos");
+
+// infos.addEventListener("click", getInfos);
+
+// function getInfos() {
+
+// }
+
+// btnInfos.addEventListener("click", moreInfos);
+
+// function moreInfos() {
+//     var modal = document.createElement("div");
+//     modal.className="modal-dialog modal-dialog-centered"
+//     modal.textContent = "plusd'infos";
+//     var moreInfos = az[i];
+//     var infos = document.createTextNode(moreInfos.id + " " + moreInfos.city + " " + moreInfos.phone);
+//     modal.appendChild(infos);
+// }
