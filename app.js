@@ -9,70 +9,46 @@ function loadDoc() {
 
             for (i = 0; i < az.length; i++) {
 
-                // créer des li
+                //afficher le nom prénom de chaque employé
 
-                var newLi = document.createElement("li");
+                var card = document.createElement("div");
+
+                card.className = "card-body";
 
                 var btnInfos = document.createElement('button');
 
-                var span = document.createElement("span");
-
-                span.id = "infos";
-
                 btnInfos.textContent = "Plus d'infos";
 
-                span.appendChild(btnInfos);
+                var emp = az[i];
 
-                var etdnt = az[i];
+                var t2 = document.createTextNode(emp.name);
 
-                var t2 = document.createTextNode(etdnt.name);
+                card.appendChild(t2);
 
-                newLi.appendChild(t2);
+                var list = document.getElementById("employees");
 
-                var list = document.getElementById("list");
+                card.appendChild(btnInfos);
 
-                list.appendChild(newLi);
+                list.appendChild(card);
 
-                list.appendChild(span);
+                // fenêtre modale avec informations
 
+                // var mod = document.createElement("div");
 
-                btnInfos.addEventListener("show.bs.modal", moreInfos);
+                // card.className = "modal-body";
 
-                function moreInfos() {
-                    for (i = 0; i < az.length; i++) {
-                        var modal = document.createElement("div");
-                        modal.className = "modal-dialog modal-dialog-centered";
-                        // modal.textContent = "plus d'infos";
-                        var etdnt = az[i];
-                        var infos = document.createTextNode(etdnt.city + " " + etdnt.phone);
-                        modal.appendChild(infos);
-                    }
-                }
+                // var infos = document.createTextNode(emp.city + " " + emp.phone);
 
+                // mod.appendChild(infos);
+
+                // btnInfos.addEventListener("show.bs.modal", moreInfos);
+
+                // function moreInfos() {
+                //     mod.style.display = "block";
+                // }
             }
         }
     };
     xhttp.open("GET", "https://60792028e7f4f50017185390.mockapi.io/api/v1/employees", true);
     xhttp.send();
 }
-
-
-
-// var infos = document.getElementById("infos");
-
-// infos.addEventListener("click", getInfos);
-
-// function getInfos() {
-
-// }
-
-// btnInfos.addEventListener("click", moreInfos);
-
-// function moreInfos() {
-//     var modal = document.createElement("div");
-//     modal.className="modal-dialog modal-dialog-centered"
-//     modal.textContent = "plusd'infos";
-//     var moreInfos = az[i];
-//     var infos = document.createTextNode(moreInfos.id + " " + moreInfos.city + " " + moreInfos.phone);
-//     modal.appendChild(infos);
-// }
