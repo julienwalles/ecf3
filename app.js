@@ -13,40 +13,52 @@ function loadDoc() {
 
                 var card = document.createElement("div");
 
-                card.className = "card-body";
+                card.className = "card style=width: 18rem";
 
-                var btnInfos = document.createElement('button');
+                card.id = "card";
+
+                var cardBody = document.createElement("div");
+
+                cardBody.className = "card-body";
+
+                cardBody.id = "cardBody";
+
+                var employeeImg = document.createElement("img");
+
+                employeeImg.src = "./img";
+
+                var cardTitle = document.createElement("h5");
+
+                cardTitle.className = "card-title";
+
+                var cardIdentity = document.createElement("p");
+
+                cardIdentity.id = "employeeIdentity";
+
+                var btnInfos =  document.createElement("button");
+
+                btnInfos.id = "employeeInfos";
 
                 btnInfos.textContent = "Plus d'infos";
 
-                var emp = az[i];
+                var employeeCard = document.getElementById("card");
 
-                var t2 = document.createTextNode(emp.name);
+                var listEmployees = document.getElementById("employees");
 
-                card.appendChild(t2);
+                employeeCard.appendChild(cardBody);
+                employeeCard.appendChild(employeeImg);
+                employeeCard.appendChild(cardTitle);
+                employeeCard.appendChild(cardIdentity);
+                employeeCard.appendChild(btnInfos);
 
-                var list = document.getElementById("employees");
+                listEmployees.appendChild(employeeCard);
+                
 
-                card.appendChild(btnInfos);
 
-                list.appendChild(card);
 
-                // fenêtre modale avec informations
+            }     
 
-                // var mod = document.createElement("div");
-
-                // card.className = "modal-body";
-
-                // var infos = document.createTextNode(emp.city + " " + emp.phone);
-
-                // mod.appendChild(infos);
-
-                // btnInfos.addEventListener("show.bs.modal", moreInfos);
-
-                // function moreInfos() {
-                //     mod.style.display = "block";
-                // }
-            }
+            
         }
     };
     xhttp.open("GET", "https://60792028e7f4f50017185390.mockapi.io/api/v1/employees", true);
