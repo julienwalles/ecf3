@@ -50,8 +50,11 @@ function loadDoc() {
 
                 btnInfos.textContent = "Plus d'infos";
 
-                // var cardBody = document.getElementById("cardBody");
-                // var card = document.getElementById("card");
+                var emp = az[i];
+
+                var bninfos = document.createTextNode(emp.name);
+
+
                 var listEmployees = document.getElementById("employees");
 
                
@@ -63,8 +66,19 @@ function loadDoc() {
                 card.appendChild(cardBody);
              
                 listEmployees.appendChild(card);
+
+
+                btnInfos.addEventListener("click", infos);
+
+                function infos() {
+
+                    alert (bninfos);
+                }
                 
             }     
+
+
+           
 
             
         }
