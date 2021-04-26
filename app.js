@@ -13,9 +13,10 @@ function loadDoc() {
 
                 var card = document.createElement("div");
 
-                card.className = "card style=width: 18rem";
+                card.className = "card col-3 ";
 
                 card.id = "card";
+
 
                 var cardBody = document.createElement("div");
 
@@ -23,17 +24,25 @@ function loadDoc() {
 
                 cardBody.id = "cardBody";
 
-                var employeeImg = document.createElement("img");
 
-                employeeImg.src = "./img";
+                var employeeImg = document.createElement("IMG");
+
+                employeeImg.setAttribute("src", "img.png");
+
+                employeeImg.className = "card-img-top";
+
 
                 var cardTitle = document.createElement("h5");
 
                 cardTitle.className = "card-title";
 
+                cardTitle.textContent = "Employee";
+
+
                 var cardIdentity = document.createElement("p");
 
                 cardIdentity.id = "employeeIdentity";
+
 
                 var btnInfos =  document.createElement("button");
 
@@ -41,21 +50,20 @@ function loadDoc() {
 
                 btnInfos.textContent = "Plus d'infos";
 
-                var employeeCard = document.getElementById("card");
-
+                // var cardBody = document.getElementById("cardBody");
+                // var card = document.getElementById("card");
                 var listEmployees = document.getElementById("employees");
 
-                employeeCard.appendChild(cardBody);
-                employeeCard.appendChild(employeeImg);
-                employeeCard.appendChild(cardTitle);
-                employeeCard.appendChild(cardIdentity);
-                employeeCard.appendChild(btnInfos);
+               
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardIdentity);
+                cardBody.appendChild(btnInfos);
 
-                listEmployees.appendChild(employeeCard);
+                card.appendChild(employeeImg);
+                card.appendChild(cardBody);
+             
+                listEmployees.appendChild(card);
                 
-
-
-
             }     
 
             
