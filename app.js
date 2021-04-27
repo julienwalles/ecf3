@@ -43,28 +43,32 @@ function loadDoc() {
 
                 cardIdentity.id = "employeeIdentity";
 
+                var emp = az[i];
 
-                var btnInfos =  document.createElement("button");
+                var emp_name = document.createTextNode(emp.name);
+
+                cardIdentity.appendChild(emp_name);
+
+
+                var btnInfos = document.createElement("button");
 
                 btnInfos.id = "employeeInfos";
 
                 btnInfos.textContent = "Plus d'infos";
 
-                var emp = az[i];
-
-                var bninfos = document.createTextNode(emp.name);
+                btnInfos.setAttribute("data-toggle", "modal");
 
 
                 var listEmployees = document.getElementById("employees");
 
-               
+
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardIdentity);
                 cardBody.appendChild(btnInfos);
 
                 card.appendChild(employeeImg);
                 card.appendChild(cardBody);
-             
+
                 listEmployees.appendChild(card);
 
 
@@ -72,15 +76,28 @@ function loadDoc() {
 
                 function infos() {
 
-                    alert (bninfos);
+
+                    var modal = document.createElement("div");
+
+                    modal.className = "modal-dialog modal-dialog-centered";
+                    modal.id = "myModal";
+                    modal.setAttribute("tabindex", "-1");
+                    modal.setAttribute("role", "dialog");
+
+                    var empl_phone = document.createTextNode(emp.phone);
+
+                    modal.appendChild(empl_phone);
+                    console.log(modal);
+
+                    var myModal = document.getElementById("myModal");
+                    myModal.showModal ();
+                    openCheck(myModal);
+                   
+
                 }
-                
-            }     
 
+            }
 
-           
-
-            
         }
     };
     xhttp.open("GET", "https://60792028e7f4f50017185390.mockapi.io/api/v1/employees", true);
