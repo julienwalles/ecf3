@@ -5,3 +5,9 @@ h1 {
 .card {
     margin: 50px;
 }
+
+.buttonDelete, .employeeInfo {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
