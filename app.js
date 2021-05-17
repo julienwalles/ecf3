@@ -67,7 +67,7 @@ function loadDoc() {
 
         }
     };
-    xhttp.open("GET", "https://60792028e7f4f50017185390.mockapi.io/api/v1/employees", true);
+    xhttp.open("GET", "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees", true);
     xhttp.send();
 }
 
@@ -103,7 +103,7 @@ function getMoreInfos(ID) {
         }
     };
 
-    var url = "https://60792028e7f4f50017185390.mockapi.io/api/v1/employees/";
+    var url = "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees/";
     xhttp.open("GET", url + ID , true);
     xhttp.send();
 }
