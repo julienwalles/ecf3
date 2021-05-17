@@ -44,11 +44,16 @@ function loadDoc() {
 
 
                 var btnInfos = document.createElement("button");
-                btnInfos.className = "employeeInfos";
-                btnInfos.textContent = "Plus d'infos";
+                btnInfos.className = "employeeInfo btn btn-primary";
+                btnInfos.textContent = "More infos";
                 btnInfos.setAttribute("data-bs-toggle", "modal");
                 btnInfos.setAttribute("data-bs-target", "#exampleModal");
                 btnInfos.setAttribute("onclick", "getMoreInfos (" + emp.id + ")");
+
+                var btnDel = document.createElement("button");
+                btnDel.className = "buttonDelete btn btn-danger";
+                btnDel.textContent = "Delete";
+                btnDel.setAttribute("onclick", "delEmployee (" + emp.id + ")");
 
 
                 var listEmployees = document.getElementById("employees");
@@ -57,6 +62,8 @@ function loadDoc() {
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardIdentity);
                 cardBody.appendChild(btnInfos);
+                cardBody.appendChild(btnDel);
+
 
                 card.appendChild(employeeImg);
                 card.appendChild(cardBody);
@@ -75,8 +82,6 @@ function loadDoc() {
 //affichage de la modale + infos ( phone, city )
 var modal = document.getElementById("exampleModal");
 
-var btn = document.getElementById("")
-
 function getMoreInfos(ID) {
 
     var modalBody = document.getElementById("modalInfo");
@@ -93,17 +98,41 @@ function getMoreInfos(ID) {
 
             let fichierJson = JSON.parse(this.responseText);
 
-            var infos = document.createTextNode ("PHONE:" + " " + fichierJson.phone +  "\n" + "CITY:" + " " + fichierJson.city);
-            var employeeName = document.createTextNode ( fichierJson.name);
+            var infos = document.createTextNode("PHONE:" + " " + fichierJson.phone + "\n" + "CITY:" + " " + fichierJson.city);
+            var employeeName = document.createTextNode(fichierJson.name);
 
-            modalTitle.appendChild (employeeName);
+            modalTitle.appendChild(employeeName);
 
-            modalBody.appendChild (infos);
+            modalBody.appendChild(infos);
 
         }
     };
 
     var url = "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees/";
     xhttp.open("GET", url + ID , true);
+    xhttp.send();
+}
+
+
+var deleteModal = document.getElementById("deleteModal");
+
+function delEmployee(ID) {
+
+    deleteModal.style.display = "block";
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+
+        if (this.readyState == 4 && this.status == 200) {
+
+            let fichierJson = JSON.parse(this.responseText);
+
+            
+        }
+    };
+
+    var url = "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees/";
+    xhttp.open("GET", url + ID, true);
     xhttp.send();
 }
