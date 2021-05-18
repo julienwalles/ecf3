@@ -79,7 +79,8 @@ function loadDoc() {
         }
 
     };
-    xhttp.open("GET", " https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees", true);
+    
+    xhttp.open("GET", "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees", true);
     xhttp.send();
 }
 
@@ -128,7 +129,7 @@ function getMoreInfos(ID) {
 
 
 let deleteModal = document.getElementById("deleteModal");
-var btnYesDel = document.getElementById("btnYesDel");
+let btnYesDel = document.getElementById("btnYesDel");
 
 function delEmployee(ID) {
 
