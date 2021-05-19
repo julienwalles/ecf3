@@ -20,3 +20,17 @@ h1 {
 .infos {
     display: block;
 }
+
+label {
+    font-weight: bold;
+}
+
+#form {
+    width: 40%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+form {
+    border: 2px solid black;
+}

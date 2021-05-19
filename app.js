@@ -1,88 +1,85 @@
-function loadDoc() {
+let xhttp = new XMLHttpRequest();
 
-    let xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
 
-    xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
 
-        if (this.readyState == 4 && this.status == 200) {
+        let fichierJson = JSON.parse(this.responseText); //convertir stringJSON en objet
 
-            let fichierJson = JSON.parse(this.responseText); //convertir stringJSON en objet
+        for (i = 0; i < fichierJson.length; i++) {
 
-            for (i = 0; i < fichierJson.length; i++) {
+            let emp = fichierJson[i];
 
-                let emp = fichierJson[i];
+            // création de la card et affichage du nom prénom de chaque employé
 
-                // création de la card et affichage du nom prénom de chaque employé
-
-                let card = document.createElement("div");
-                card.className = "card col-3 ";
-                card.id = "card";
+            let card = document.createElement("div");
+            card.className = "card col-3 ";
+            card.id = "card";
 
 
-                let cardBody = document.createElement("div");
-                cardBody.className = "card-body";
-                cardBody.id = "cardBody";
+            let cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+            cardBody.id = "cardBody";
 
 
-                let employeeImg = document.createElement("IMG");
-                employeeImg.setAttribute("src", "img.png");
-                employeeImg.className = "card-img-top";
+            let employeeImg = document.createElement("IMG");
+            employeeImg.setAttribute("src", "img.png");
+            employeeImg.className = "card-img-top";
 
 
-                let cardTitle = document.createElement("h5");
-                cardTitle.className = "card-title";
-                cardTitle.textContent = "Employee" + " " + emp.id;
+            let cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title";
+            cardTitle.textContent = "Employee" + " " + emp.id;
 
 
-                let cardIdentity = document.createElement("p");
-                cardIdentity.className = "employeeIdentity";
+            let cardIdentity = document.createElement("p");
+            cardIdentity.className = "employeeIdentity";
 
 
 
 
-                let emp_name = document.createTextNode("Identity:" + " " + emp.name + " " + emp.last_name);
+            let emp_name = document.createTextNode("Identity:" + " " + emp.name + " " + emp.last_name);
 
-                cardIdentity.appendChild(emp_name);
-
-
-                let btnInfos = document.createElement("button");
-                btnInfos.className = "employeeInfo btn btn-primary";
-                btnInfos.textContent = "More infos";
-                btnInfos.setAttribute("data-bs-toggle", "modal");
-                btnInfos.setAttribute("data-bs-target", "#exampleModal");
-                btnInfos.setAttribute("onclick", "getMoreInfos (" + emp.id + ")");
-
-                let btnDel = document.createElement("button");
-                btnDel.className = "buttonDelete btn btn-danger";
-                btnDel.textContent = "Delete";
-                btnDel.setAttribute("data-bs-toggle", "modal");
-                btnDel.setAttribute("data-bs-target", "#deleteModal");
-                btnDel.setAttribute("onclick", "delEmployee (" + emp.id + ")");
+            cardIdentity.appendChild(emp_name);
 
 
-                let listEmployees = document.getElementById("employees");
+            let btnInfos = document.createElement("button");
+            btnInfos.className = "employeeInfo btn btn-primary";
+            btnInfos.textContent = "More infos";
+            btnInfos.setAttribute("data-bs-toggle", "modal");
+            btnInfos.setAttribute("data-bs-target", "#exampleModal");
+            btnInfos.setAttribute("onclick", "getMoreInfos (" + emp.id + ")");
+
+            let btnDel = document.createElement("button");
+            btnDel.className = "buttonDelete btn btn-danger";
+            btnDel.textContent = "Delete";
+            btnDel.setAttribute("data-bs-toggle", "modal");
+            btnDel.setAttribute("data-bs-target", "#deleteModal");
+            btnDel.setAttribute("onclick", "delEmployee (" + emp.id + ")");
 
 
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardIdentity);
-                cardBody.appendChild(btnInfos);
-                cardBody.appendChild(btnDel);
+            let listEmployees = document.getElementById("employees");
 
 
-                card.appendChild(employeeImg);
-                card.appendChild(cardBody);
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardIdentity);
+            cardBody.appendChild(btnInfos);
+            cardBody.appendChild(btnDel);
 
-                listEmployees.appendChild(card);
 
-            }
+            card.appendChild(employeeImg);
+            card.appendChild(cardBody);
+
+            listEmployees.appendChild(card);
 
         }
 
-    };
-    
-    xhttp.open("GET", "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees", true);
-    xhttp.send();
-}
+    }
+
+};
+
+xhttp.open("GET", "https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees", true);
+xhttp.send();
 
 
 
@@ -145,7 +142,7 @@ function delEmployee(ID) {
 
             btnYesDel.onclick = function () {
 
-                document.getElementById("card").style.display = "none";
+                location.reload();
 
             }
 
@@ -156,4 +153,23 @@ function delEmployee(ID) {
     let url = " https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees/";
     xhttp.open("DELETE", url + ID, true);
     xhttp.send();
+}
+
+function submit() {
+
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+
+        if (this.readyState == 4 && this.status == 200) { 
+              const 
+              }
+        };
+
+
+    let url = " https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees";
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify(json));
+
 }
