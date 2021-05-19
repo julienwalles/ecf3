@@ -157,6 +157,13 @@ function delEmployee(ID) {
 
 function submit() {
 
+    const data = {
+        'name' : document.getElementById('name').value,
+        'last_name' : document.getElementById('lastname').value,
+        'email' : document.getElementById('email').value,
+        'job' : document.getElementById('job').value
+    }
+
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
@@ -166,10 +173,9 @@ function submit() {
               }
         };
 
-
     let url = " https://6057e432c3f49200173ad08d.mockapi.io/api/v1/employees";
     xhttp.open("POST", url, true);
-    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhttp.send(JSON.stringify(json));
+    xhttp.setRequestHeader("Content-Type", "application/json", "charset=UTF-8");
+    xhttp.send(JSON.stringify(data));
 
 }
